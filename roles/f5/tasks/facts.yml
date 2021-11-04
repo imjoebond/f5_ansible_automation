@@ -1,0 +1,8 @@
+- name: Retrieve BIG-IP Facts
+  bigip_device_info:
+    gather_subset:
+      - virtual-servers
+      - ltm-pools
+      - gtm-a-pools
+    provider: "{{ f5_connection_info }}"
+    

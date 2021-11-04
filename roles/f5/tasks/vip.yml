@@ -1,0 +1,11 @@
+- name: Create virtual server
+  bigip_virtual_server:
+    state: "{{ f5_vip.state }}"
+    provider: "{{ f5_connection_info }}"
+    description: "{{ f5_vip.description }}"
+    destination: "{{ f5_vip.destination }}"
+    name: "{{ f5_vip.name }}"
+    pool: "{{ f5_vip.pool }}"
+    profiles: "{{ f5_vip.profiles }}"
+    snat: "{{ f5_vip.snat }}"
+    port: "{{ f5_vip.port }}"

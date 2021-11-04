@@ -1,0 +1,11 @@
+- name: Create a pool
+  bigip_pool:
+    state: present
+    provider: "{{ f5_connection_info }}"
+    lb_method: "{{ f5_pool.pool_lb_method }}"
+    name: "{{ f5_pool.pool_name }}"
+
+- include_tasks: pool_member.yml
+  with_items: "{{ f5_pool.pool_members }}"
+  loop_control:
+    loop_var: f5_pool_member

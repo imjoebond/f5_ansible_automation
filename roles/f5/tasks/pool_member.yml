@@ -1,0 +1,9 @@
+- name: Create pool members
+  bigip_pool_member:
+    state: present
+    provider: "{{ f5_connection_info }}"
+    description: "{{ f5_pool_member.name }} description"
+    name: "{{ f5_pool_member.name }}"
+    host: "{{ f5_pool_member.host }}"
+    pool: "{{ f5_pool.pool_name }}"
+    port: "{{ f5_pool_member.port }}"

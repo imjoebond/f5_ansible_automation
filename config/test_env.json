@@ -1,0 +1,43 @@
+{
+    "f5": {
+        "server": "192.168.211.136",
+        "server_port": 443,
+        "validate_certs": "no",
+        "vips": [
+            {
+                "name": "test-vip",
+                "destination": "172.16.135.100",
+                "description": "This is a test description for vip",
+                "snat": "Automap",
+                "state" : "present",
+                "port": 443,
+                "pool": "test-pool",
+                "profiles": [
+                    "http",
+                    "clientssl"
+                ]
+            }
+        ],
+        "pools": [
+            {
+                "pool_name": "test-pool",
+                "state" : "present",
+                "pool_lb_method": "round-robin",
+                "pool_members": [
+                    {
+                        "name": "test-pool-member-1",
+                        "state" : "present",
+                        "host": "172.16.122.100",
+                        "port": 80
+                    },
+                    {
+                        "name": "test-pool-member-2",
+                        "state" : "present",
+                        "host": "172.16.122.101",
+                        "port": 80
+                    }
+                ]
+            }
+        ]
+    }
+}

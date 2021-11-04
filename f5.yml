@@ -1,0 +1,16 @@
+- name: F5 Demo Playbook for managing vips
+  connection: local
+  hosts: localhost
+  gather_facts: no
+  vars:
+    vip_info: "{{ f5.vip_info }}"
+    f5_connection_info:
+      server: "{{ f5.server }}"
+      server_port: "{{ f5.server_port }}"
+      user: "{{ lookup('env', 'F5_USER') }}"
+      password: "{{ lookup('env', 'F5_PASSWORD') }}"
+      validate_certs: "{{ f5.validate_certs }}"
+
+  tasks:
+  - include_role:
+      name: f5

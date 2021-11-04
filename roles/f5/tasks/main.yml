@@ -1,0 +1,14 @@
+- name: Retrieve facts
+  include_tasks: facts.yml
+
+- name: Create Pools
+  include_tasks: pool.yml
+  with_items: "{{ f5.pools }}"
+  loop_control:
+    loop_var: f5_pool
+
+- name: Create Virtual IPs
+  include_tasks: vip.yml
+  with_items: "{{ f5.vips }}"
+  loop_control:
+    loop_var: f5_vip
